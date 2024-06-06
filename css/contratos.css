@@ -1,0 +1,932 @@
+:root {
+    --bg--cabezera: #fff;
+    --bg--cabezera--hover: #ebebeb;
+    --bg--select: #0000007a;
+    --bg--cuerpo--uno: #ce0000;
+    --bg--cuerpo--dos: #8a0000;
+    --color--cabezera: #000;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-image: linear-gradient(180deg, var(--bg--cuerpo--uno) 18%, var(--bg--cuerpo--dos) 100%);
+    scroll-behavior: smooth;
+}
+
+body::-webkit-scrollbar {
+    width: 10px;
+    height: 1px;
+}
+
+body::-webkit-scrollbar-thumb {
+    border-radius: 20px;
+    background: rgb(255, 0, 0);
+    background: -moz-linear-gradient(180deg, rgba(255, 0, 0, 1) 0%, rgba(255, 76, 125, 1) 50%, rgba(255, 0, 0, 1) 100%);
+    background: -webkit-linear-gradient(180deg, rgba(255, 0, 0, 1) 0%, rgba(255, 76, 125, 1) 50%, rgba(255, 0, 0, 1) 100%);
+    background: linear-gradient(180deg, rgba(255, 0, 0, 1) 0%, rgba(255, 76, 125, 1) 50%, rgba(255, 0, 0, 1) 100%);
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#ff0000", endColorstr="#ff0000", GradientType=1);
+}
+
+
+/* Oculta el contenido hasta que el loader desaparezca */
+body.loading section,
+body.loading header,
+body.loading .circle {
+    visibility: hidden;
+}
+
+/* Desactiva el scroll en el cuerpo mientras el loader está activo */
+body.loading {
+    overflow: hidden;
+}
+
+body.active-scroll-lock {
+    overflow: hidden;
+}
+
+/* Transición suave para el contenido */
+body:not(.loading) section,
+body:not(.loading) header,
+body:not(.loading) .circle {
+    opacity: 1;
+    transition: opacity 2s ease-in-out;
+    visibility: visible;
+}
+
+.circle {
+    width: 24px;
+    height: 24px;
+    border-radius: 50%;
+    background-color: black;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: -1;
+}
+
+header {
+    width: 100%;
+    height: 12vh;
+    background-color: #00000000;
+    /* Color de fondo transparente */
+    transition: height 0.5s cubic-bezier(0.4, 0, 1, 1);
+    justify-content: space-evenly;
+}
+
+header.active {
+    position: fixed;
+    height: 12vh;
+    background-color: var(--bg--cabezera);
+    /* Cambia el color de fondo cuando está activo */
+    justify-content: space-evenly;
+    z-index: 1;
+}
+
+.logo {
+    width: 0;
+}
+
+.logo img {
+
+    width: 100%;
+}
+
+.logo.active {
+    width: 8%;
+}
+
+.select {
+    cursor: pointer;
+}
+
+.select i {
+    font-size: 1.5rem;
+    color: var(--bg--cabezera);
+    z-index: 1;
+}
+
+.boton {
+    width: 2rem;
+    height: 2rem;
+    border-radius: 50%;
+    background-color: var(--bg--select);
+    border: none;
+}
+
+/* TARJETA */
+.fodo_tarjeta.active {
+    display: block;
+    width: 100%;
+    height: 100%;
+    position: fixed;
+    top: 0;
+    left: 0;
+    background-color: rgba(0, 0, 0, 0.493);
+    z-index: 1; 
+}
+
+.carta.active {
+    display: block;
+    max-width: 340px;
+    height: 600px;
+    background: var(--bg--cabezera);
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    border-radius: 16px;
+    padding: 1rem;
+    z-index: 2;
+}
+
+.carta,
+.fodo_tarjeta {
+    display: none;
+}
+
+.cerrar {
+    position: absolute;
+    right: 1rem;
+    top: 1rem;
+    background: none;
+    border: none;
+    cursor: pointer;
+}
+
+.cerrar i {
+    font-size: 1.1rem;
+}
+
+.link_descarga {
+    width: 100%;
+}
+
+.link_descarga h3 {
+    width: 60%;
+    font-size: 1.4rem;
+}
+
+.link_descarga p {
+    width: 100%;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.enlace {
+    width: 100%;
+    height: 4vh;
+    background-color: #f1f1f1;
+    padding-left: 1rem;
+    padding-right: 1rem;
+    border-radius: 5px;
+}
+
+.enlace a{
+    margin: 0;
+    padding: 0;
+    font-weight: 500;
+    text-decoration: none;
+    color: #000 ;
+    cursor: pointer;
+}
+
+.enlace a:hover{
+    color: #fc4242;
+}
+
+.enlace a i {
+    color: #000;
+    font-size: 1.2rem;
+}
+
+.redes_s {
+    width: 100%;
+    height: 5vh;
+    margin-top: .5rem;
+}
+
+.redes {
+    gap: 1.4rem;
+}
+
+.redes a {
+    text-decoration: none;
+}
+
+.redes i {
+    font-size: 1.5rem;
+}
+
+.redes a:nth-last-child(7) i {
+    color: #4285F4;
+}
+
+.redes a:nth-last-child(6) i {
+    width: 23px;
+    height: 23px;
+    background: #000;
+    color: #fff;
+    border-radius: 50%;
+    font-size: .8rem;
+    padding-top: 3px;
+}
+
+.redes a:nth-last-child(5) i {
+    width: 23px;
+    height: 23px;
+    background: #49a12e;
+    color: #fff;
+    border-radius: 50%;
+    font-size: .8rem;
+    padding-top: 3px;
+}
+
+.redes a:nth-last-child(4) i {
+    color: #279FDA;
+}
+
+.redes a:nth-last-child(3) i {
+    color: #006699;
+}
+
+.redes a:nth-last-child(2) i {
+    background: rgb(0, 98, 255);
+    background: linear-gradient(45deg, rgba(0, 98, 255, 1) 0%, rgba(255, 0, 134, 1) 100%);
+    -webkit-background-clip: text;
+    color: transparent;
+}
+
+.redes a:nth-last-child(1) i {
+    color: #222D65;
+}
+
+.separador {
+    width: 100%;
+    border-top: rgb(139, 139, 139) solid 1px;
+    margin-top: 1rem;
+    margin-bottom: 2rem;
+}
+
+.qr {
+    width: 100%;
+    height: 45%;
+    background-color: #f1f1f1;
+}
+
+.img_qr {
+    width: 55%;
+    height: 70%;
+}
+
+.img_qr img{
+    width: 100%;
+}
+
+.img_qr canvas{
+    width: 100%;
+}
+
+.descargar_doc {
+    width: 85%;
+    height: 5vh;
+    border: solid var(--bg--cuerpo--uno) 2px;
+    border-radius: 10px;
+    margin-top: 2rem;
+}
+
+.descargar_doc a {
+    text-decoration: none;
+    font-weight: 600;
+    color: var(--bg--cuerpo--dos);
+}
+
+/* CUERPO */
+.boton:hover {
+    background-color: var(--color--cabezera);
+}
+
+.seleccionar {
+    display: none;
+}
+
+.seleccionar.active {
+    display: block;
+    position: fixed;
+    top: 5rem;
+    width: auto;
+    height: auto;
+    padding: .6rem;
+    background-color: var(--bg--cabezera--hover);
+    border-radius: 10px;
+}
+
+.seleccionar div i {
+    color: var(--color--cabezera);
+}
+
+.seleccionar div a {
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    gap: .5rem;
+    margin: 0;
+    padding: 0;
+    color: var(--color--cabezera);
+    font-weight: 600;
+}
+
+.seleccionar div {
+    padding: 0px 10px 0px 10px;
+    border-radius: 5px;
+}
+
+.seleccionar div:hover {
+    background-color: var(--bg--cabezera);
+}
+
+.links {
+    width: 100%;
+    height: auto;
+
+}
+
+.cabazera_logo {
+    padding-top: 2rem;
+    width: 100%;
+    color: var(--bg--cabezera);
+}
+
+.content_logo {
+    width: 7.5%;
+    /* background: rgb(255, 255, 255); */
+    background: radial-gradient(circle, #ffffff 50%, #a5a5a5 100%);
+    border-radius: 50%;
+    box-shadow: 0px 17px 13px -8px rgba(255, 255, 255, 0.562);
+}
+
+.logo_cuerpo {
+    width: 100%;
+}
+
+.cabazera_logo h2 {
+    margin-top: 2rem;
+    font-size: 1.7rem;
+    font-weight: 700;
+}
+
+.validado {
+    margin-left: .5rem;
+    width: 1.3rem;
+    height: 1.3rem;
+    background-color: #295FD1;
+    border-radius: 50%;
+}
+
+.cabazera_logo p {
+    width: 30%;
+    font-weight: 600;
+}
+
+.cuerpo_links {
+    margin-top: 1rem;
+    width: 100%;
+}
+
+.content_links {
+    margin-top: 2rem;
+}
+
+.content_links h5 {
+    font-size: 1.2rem;
+    font-weight: 500;
+    color: var(--bg--cabezera);
+    width: 15%;
+    text-align: center;
+    margin-bottom: 1rem;
+}
+
+.contratos {
+    text-align: center;
+    padding: 0px 1rem 0 1rem;
+    gap: 4rem;
+    width: 30%;
+    height: 7.2vh;
+    background-color: var(--bg--cabezera);
+    border-radius: 1rem;
+    transition: all .3s;
+    cursor: pointer;
+}
+
+.contratos:hover {
+    background-color: var(--bg--cabezera--hover);
+}
+
+.contratos img {
+    width: 15%;
+}
+
+.contratos a {
+    font-size: .8rem;
+    text-decoration: none;
+}
+
+.contratos p {
+    padding: 0;
+    margin: 0;
+    font-weight: 700;
+    color: var(--bg--cuerpo--dos);
+}
+
+/* BOTON CAMBiO */
+
+.button {
+    border-radius: 50%;
+    border: none;
+    display: flex;
+    place-items: center;
+    background-color: transparent;
+    cursor: pointer;
+}
+
+.button>svg {
+    border-radius: inherit;
+    padding: 0.5rem;
+    fill: #000000;
+    /* SVG color */
+    width: 38px;
+    /* default width 32px */
+    height: 38px;
+    /* default height 32px */
+}
+
+.button>svg:active {
+    background-color: rgba(65, 65, 65, 0.5);
+}
+
+.button>svg:not(:active) {
+    animation: fadeOut 0.9s;
+}
+
+@keyframes fadeOut {
+    0% {
+        outline: 1px solid rgba(90, 90, 90, 0.5);
+        /* If you use border it will take space inside and slightly move the SVG */
+    }
+
+    100% {
+        background-color: transparent;
+    }
+}
+
+/* LOADER */
+
+.contnt_loader {
+    background-color: var(--bg--cabezera);
+    width: 100%;
+    height: 100vh;
+    position: relative;
+}
+
+.loaders {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.cssload-container * {
+    box-sizing: border-box;
+}
+
+.cssload-container {
+    margin: 38px auto 0 auto;
+    max-width: 1048px;
+}
+
+.cssload-container ul li {
+    list-style: none;
+}
+
+.cssload-flex-container {
+    display: flex;
+    display: -o-flex;
+    display: -ms-flex;
+    display: -webkit-flex;
+    display: -moz-flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-around;
+}
+
+.cssload-flex-container li {
+    padding: 19px;
+    height: 188px;
+    width: 188px;
+    margin: 56px 38px;
+    position: relative;
+    text-align: center;
+}
+
+.cssload-loading-center {
+    display: inline-block;
+    position: absolute;
+    /* The color can be custmized, This color is for center cube.*/
+    background: #ff0000;
+    height: 56px;
+    width: 56px;
+    left: 68px;
+    top: 69px;
+    transform: rotate(45deg);
+    border-radius: 6px;
+    animation: pulse 1.3s ease infinite;
+}
+
+.cssload-loading {
+    display: inline-block;
+    position: relative;
+    width: 141px;
+    height: 141px;
+    margin-top: 6px;
+    transform: rotate(45deg);
+}
+
+.cssload-loading:after,
+.cssload-loading:before {
+    position: absolute;
+    content: '';
+    height: 19px;
+    width: 19px;
+    display: block;
+    top: 0;
+    /* The color can be custmized, This color is for 4 cubes.*/
+    background: #ff5252;
+    border-radius: 6px;
+}
+
+.cssload-loading:after {
+    right: 0;
+    animation: square-tr 2.6s ease infinite;
+    animation-delay: .162.5s;
+}
+
+.cssload-loading:before {
+    animation: square-tl 2.6s ease infinite;
+    animation-delay: .162.5s;
+}
+
+.cssload-loading.cssload-two {
+    position: relative;
+    top: -150px;
+}
+
+.cssload-loading.cssload-two:after,
+.cssload-loading.cssload-two:before {
+    bottom: 0;
+    top: initial;
+}
+
+.cssload-loading.cssload-two:after {
+    animation: square-br 2.6s ease infinite;
+    animation-direction: reverse;
+}
+
+.cssload-loading.cssload-two:before {
+    animation: square-bl 2.6s ease infinite;
+    animation-direction: reverse;
+}
+
+@keyframes square-tl {
+    0% {
+        transform: translate(0, 0);
+    }
+
+    25% {
+        transform: translate(0, 117.5px);
+    }
+
+    50% {
+        transform: translate(117.5px, 117.5px);
+    }
+
+    75% {
+        transform: translate(117.5px, 0);
+    }
+}
+
+@keyframes square-bl {
+    0% {
+        transform: translate(0, 0);
+    }
+
+    25% {
+        transform: translate(0, -117.5px);
+    }
+
+    50% {
+        transform: translate(117.5px, -117.5px);
+    }
+
+    75% {
+        transform: translate(117.5px, 0);
+    }
+}
+
+@keyframes square-tr {
+    0% {
+        transform: translate(0, 0);
+    }
+
+    25% {
+        transform: translate(-117.5px, 0);
+    }
+
+    50% {
+        transform: translate(-117.5px, 117.5px);
+    }
+
+    75% {
+        transform: translate(0, 117.5px);
+    }
+}
+
+@keyframes square-br {
+    0% {
+        transform: translate(0, 0);
+    }
+
+    25% {
+        transform: translate(-117.5px, 0);
+    }
+
+    50% {
+        transform: translate(-117.5px, -117.5px);
+    }
+
+    75% {
+        transform: translate(0, -117.5px);
+    }
+}
+
+@keyframes rotate {
+    from {
+        transform: rotate(0deg);
+    }
+
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+@keyframes pulse {
+
+    0%,
+    100% {
+        transform: scale(inherit) rotate(45deg);
+    }
+
+    75% {
+        transform: scale(0.25) rotate(45deg);
+    }
+}
+
+
+/* MEDIAS */
+@media (max-width: 1500px) {
+    .content_links h5 {
+        width: 20%;
+    }
+
+    .contratos {
+        gap: 1rem;
+    }
+
+}
+
+@media (max-width: 1100px) {
+
+    .logo.active {
+        width: 15%;
+    }
+
+    .content_logo {
+        width: 15%;
+    }
+
+    .cabazera_logo h2 {
+        font-size: 2rem;
+    }
+
+    .cabazera_logo p {
+        width: 40%;
+        font-size: 1.2rem;
+    }
+
+    .content_links h5 {
+        font-size: 1.3rem;
+        width: 40%;
+    }
+
+    .contratos {
+        width: 60%;
+        /* gap: 1rem; */
+    }
+
+    .contacto p {
+        font-size: 1.4rem;
+    }
+
+    .carta.active{
+        height: 650px;
+    }
+
+    .separador{
+        margin-top: .5rem;
+        margin-bottom: 1rem;
+    }
+
+    .descargar_doc{
+        margin-top: 2rem;
+    }
+}
+
+@media (max-height: 800px) {
+    .contratos {
+        width: 50%;
+        height: 7.5vh;
+    }
+
+    header.active {
+        height: 15vh;
+    }
+
+    .logo.active {
+        width: 10%;
+    }
+
+    .separador{
+        margin-top: 1rem;
+        margin-bottom: 2rem;
+    }
+
+    .descargar_doc{
+        margin-top: 4rem;
+        height: 7vh;
+    }
+}
+
+@media (max-width: 760px) {
+    .logo.active {
+        width: 15%;
+    }
+
+    .content_logo {
+        width: 13%;
+    }
+
+    .cabazera_logo p {
+        width: 50%;
+    }
+
+    .content_links h5 {
+        width: 40%;
+        font-size: .95rem;
+    }
+
+    .contratos {
+        gap: 1rem;
+        width: 60%;
+    }
+
+    .contratos p {
+        font-size: .8rem;
+    }
+}
+
+@media (max-width: 550px) {
+    header {
+        justify-content: space-around;
+    }
+
+    header.active {
+        justify-content: space-around;
+    }
+
+    .logo.active {
+        width: 20%;
+    }
+
+    .content_logo {
+        width: 20%;
+    }
+
+    .cabazera_logo h2 {
+        font-size: 1.5rem;
+    }
+
+    .cabazera_logo p {
+        width: 60%;
+        font-size: .9rem;
+    }
+
+    .content_links h5 {
+        width: 50%;
+        font-size: .9rem;
+    }
+
+    .contratos {
+        width: 70%;
+    }
+}
+
+@media (max-width: 450px) {
+    .seleccionar div i {
+        font-size: 1.5rem;
+    }
+
+    .seleccionar div a {
+        font-size: .8rem;
+    }
+
+    .logo.active {
+        width: 28%;
+    }
+
+    .cabazera_logo h2 {
+        font-size: 1.2rem;
+    }
+
+    .cabazera_logo p {
+        font-size: .75rem;
+    }
+
+    .cuerpo_links {
+        margin-top: 0rem;
+    }
+
+    .content_links h5 {
+        width: 60%;
+        font-size: .9rem;
+    }
+
+    .contratos {
+        width: 90%;
+    }
+
+    .contratos p {
+        font-size: .75rem;
+    }
+
+    .contacto h6,
+    p {
+        text-align: center;
+        width: 100%;
+    }
+
+    .logo_footer {
+        width: 35%;
+    }
+
+    .carta.active{
+        width: 300px;
+        height: 525px;
+    }
+
+    .carta h3{
+        font-size: 1.3rem;
+    }
+
+    .carta p{
+        font-size: .85rem;
+    }
+
+    .enlace a{
+        font-size: .9rem;
+    }
+
+    .redes {
+        gap: 1rem;
+    }
+
+    .redes a i{
+        font-size: 1.3rem;
+    }
+
+    .separador{
+        margin-top: .8rem;
+        margin-bottom: 1rem;
+    }
+
+    .descargar_doc{
+        margin-top: 1rem;
+    }
+}
