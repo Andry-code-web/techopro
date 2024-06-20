@@ -29,11 +29,11 @@ body::-webkit-scrollbar {
 
 body::-webkit-scrollbar-thumb {
     border-radius: 20px;
-    background: rgb(255,0,0);
-    background: -moz-linear-gradient(180deg, rgba(255,0,0,1) 0%, rgba(255,76,125,1) 50%, rgba(255,0,0,1) 100%);
-    background: -webkit-linear-gradient(180deg, rgba(255,0,0,1) 0%, rgba(255,76,125,1) 50%, rgba(255,0,0,1) 100%);
-    background: linear-gradient(180deg, rgba(255,0,0,1) 0%, rgba(255,76,125,1) 50%, rgba(255,0,0,1) 100%);
-    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#ff0000",endColorstr="#ff0000",GradientType=1);
+    background: var(--bg--cuerpo--uno);
+    background: -moz-linear-gradient(180deg, var(--bg--cuerpo--uno) 0%, var(--bg--cuerpo--dos) 100%);
+    background: -webkit-linear-gradient(180deg, var(--bg--cuerpo--uno) 0%, var(--bg--cuerpo--dos) 100%);
+    background: linear-gradient(180deg, var(--bg--cuerpo--uno) 0%, var(--bg--cuerpo--dos) 100%);
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#0A9152",endColorstr="#00522E",GradientType=1);
 }
 
 .circle {
